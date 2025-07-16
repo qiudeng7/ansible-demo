@@ -36,8 +36,6 @@ ssh node-1
 ```yaml 
 services:
   ansible:
-    build:services:
-  ansible:
     build:
       context: .
       dockerfile: Dockerfile.ansible
