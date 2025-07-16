@@ -11,7 +11,7 @@ docker compose up -d
 # 进入ansible容器
 docker compose exec -it ansible bash
 
-# 进入容器之后可以使用ssh直接连接节点
+# 进入容器之后可以使用ssh通过直接连接节点，已经自动设置好密钥对。 
 ssh node-1
 ```
 
