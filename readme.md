@@ -71,3 +71,8 @@ services:
         condition: service_healthy # 等待ansible健康检查通过再启动runner
     command: bash /ansible-demo/init_node.sh
 ```
+
+
+## TODO
+1. 即使复制过公钥之之后，ansible服务会一直健康检查，这是不必要的。
+2. 不确定node是`构建镜像->等待ansible服务->启动容器` 还是`等待ansible服务->构建镜像->启动容器`，如果是后者，则可以优化为前者。
