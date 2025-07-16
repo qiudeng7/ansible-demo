@@ -1,0 +1,20 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 换源
+RUN sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list \
+    && sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/ubuntu.sources \
+    && apt update
+
+# 安装ssh
+RUN apt install -y ssh && mkdir /run/sshd
+
+# 配置ssh
+RUN cat> /etc/ssh/sshd_config <<EOF
+PermitRootLogin yes       # 开启root登录
+PasswordAuthentication yes # 开启密码认证
+PermitEmptyPasswords yes  # 允许空密码登录
+EOF
+
+CMD ["/usr/sbin/sshd","-D"]
