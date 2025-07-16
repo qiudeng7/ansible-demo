@@ -61,38 +61,7 @@ services:
       ansible:
         condition: service_healthy # 等待ansible健康检查通过再启动runner
     command: bash /ansible-demo/init_node.sh
-  node-2:
-    build:
-      context: .
-      dockerfile: Dockerfile.node
-    volumes:
-      - .:/ansible-demo
-    depends_on: 
-      ansible:
-        condition: service_healthy # 等待ansible健康检查通过再启动runner
-    command: bash /ansible-demo/init_node.sh
-      context: .
-      dockerfile: Dockerfile.ansible
-    volumes:
-      - .:/ansible-demo
-    healthcheck:
-      test: ["CMD", "sh", "-c", "test -f /ansible-demo/pub_key || exit 1"]
-      interval: 2s
-      timeout: 2s
-      retries: 3
-      start_period: 1s
-    command: bash /ansible-demo/init_ansible.sh
   
-  node-1:
-    build:
-      context: .
-      dockerfile: Dockerfile.node
-    volumes:
-      - .:/ansible-demo
-    depends_on: 
-      ansible:
-        condition: service_healthy # 等待ansible健康检查通过再启动runner
-    command: bash /ansible-demo/init_node.sh
   node-2:
     build:
       context: .
