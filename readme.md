@@ -2,6 +2,9 @@
 
 ## 快速开始
 ```bash
+# 克隆仓库
+git clone https://github.com/qiudeng7/ansible-demo.git && cd ansible-demo
+
 # 启动ansible和node
 docker compose up -d
 
