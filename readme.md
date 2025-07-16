@@ -20,7 +20,7 @@ ssh node-1
 ## 工作方式
 1. `docker compose up -d`会先启动ansible服务
    1. 构建Dockerfile.ansible: 基于python镜像，安装ansible和ssh
-   2. 执行init_ansible.sh: 生成ssh秘钥，然后复制到
+   2. 执行init_ansible.sh: 生成ssh秘钥，然后复制到宿主机
 2. ansible的健康检查会轮询ansible容器的公钥是否生成
 3. 公钥生成之后创建node容器
    1. 构建Dockerfile.node: 安装和配置ssh，启动sshd
