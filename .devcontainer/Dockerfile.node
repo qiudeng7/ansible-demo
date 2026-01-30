@@ -17,4 +17,6 @@ PasswordAuthentication yes # 开启密码认证
 PermitEmptyPasswords yes  # 允许空密码登录
 EOF
 
+RUN mkdir mkdir /run/sshd
+
 CMD ["/usr/sbin/sshd","-D"]
