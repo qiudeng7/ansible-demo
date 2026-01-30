@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources \
     && apt update
 
-# 安装一些网络工具
-RUN apt install -y iputils-ping ssh
+# 常用工具
+RUN apt install -y iputils-ping ssh git
 
 # 安装ansible
 RUN pip install ansible
